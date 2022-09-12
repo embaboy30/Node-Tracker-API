@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+const port = process.env.PORT || 3000;
 
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true });
 const db = mongoose.connection;
@@ -16,4 +17,4 @@ app.use(express.json());
 const tracker = require('./routes/trackers');
 app.use('/tracker', tracker);
 
-app.listen(3000, () => console.log('server start'))
+app.listen(port, () => console.log('server start'))
